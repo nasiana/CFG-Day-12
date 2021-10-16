@@ -22,3 +22,33 @@ print(response.status_code)
 # lets see what data about people in space we get back from the API response
 data = response.json()
 pp(data)
+
+### EXERCISE 2 ###
+"""
+TASK: Make a call with a 'PAYLOAD' (special requirements) to the API endpoint
+"""
+
+import requests
+from pprint import pprint as pp
+
+# this endpoint tells us timings when the international space station will pass over a **given location** on Earth
+endpoint2 = 'http://api.open-notify.org/iss-pass.json'
+
+# As an input the API expects a latitude/longitude pair for the location of our interest
+# Let's make a dictionary with these parameters, and then include them into our call to the API
+# payload = { # these are coordinates for London
+#     'lat': 51.507,
+#     'lon': 0.1278
+# }
+payload = { # these are coordinates for New York
+    'lat': 40.71,
+    'lon': -74,
+}
+
+response = requests.get(endpoint2,params=payload)
+print(response.status_code)
+
+data = response.json()
+pp(data)
+
+# DO EXERCISE 3 TOMORROW WHEN I'M HOME
